@@ -16,6 +16,7 @@ def get_anime_from_file(file_name):
         df = pd.read_csv(file_name) # this should cause except when no file
         anime2url = {}
         titles = df['Anime title'].tolist()
+        # print(df.head())
         urls = df['url'].tolist()
         for i, j in zip(titles, urls):
             anime2url[i] = j
@@ -36,10 +37,11 @@ def main():
     print("loops")
     contents = result.find_all('a', 'newanime__content')
 
-    file_name = '7_4_scrape.csv'
+    file_name = '6-23_scrape.csv'
     
     # read file and return dictionaty
     anime2url = get_anime_from_file(file_name)
+    # print("anime2url", anime2url)
 
     for index, i in enumerate(contents):
         name = i.find('p').text
